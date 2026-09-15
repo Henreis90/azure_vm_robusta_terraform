@@ -150,16 +150,11 @@ resource "azurerm_linux_virtual_machine" "vm" {
   custom_data = base64encode(local.cloud_init)
 }
 
-# Output para sabermos o IP de acesso
-output "public_ip_address" {
-  value = azurerm_public_ip.pip.lab-docker-pip
-}
-
 # Output para sabermos Usuario e Senha
 output "user_credentials" {
   value = { 
     username = azurerm_linux_virtual_machine.vm.admin_username
     password = azurerm_linux_virtual_machine.vm.admin_password
     }
-    sensitive = false
+    sensitive = true
 }
