@@ -5,7 +5,7 @@ Baixe o repositorio com git clone...
 
 ---
 
-## Máquina
+## 1. Máquina
 
 * **Size:** `Standard_D2s_v3` (General Purpose)
 * **vCPUs:** 2
@@ -15,37 +15,37 @@ Baixe o repositorio com git clone...
 
 ---
 
-## Preparação do Ambiente Com AzureCLI
+## 2. Preparação do Ambiente Com AzureCLI
 
-### Atualizar e instalar dependências
+### 2.1. Atualizar e instalar dependências
 ```bash
 ### Atualizar e instalar dependências
 sudo apt-get update
 sudo apt-get install -y apt-transport-https ca-certificates curl gnupg lsb-release
 ```
 ---
-### Baixar e adicionar a chave GPG da Microsoft
+### 2.2. Baixar e adicionar a chave GPG da Microsoft
 ```bash
 ### Baixar e adicionar a chave GPG da Microsoft
 sudo mkdir -p /etc/apt/keyrings
 curl -sL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | sudo tee /etc/apt/keyrings/microsoft.gpg > /dev/null
 ```
 ---
-### Adicionar o repositório oficial do Azure CLI
+### 2.3. Adicionar o repositório oficial do Azure CLI
 ```bash
 ### Adicionar o repositório oficial do Azure CLI
 AZ_DIST=$(lsb_release -cs)
 echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/microsoft.gpg] https://packages.microsoft.com/repos/azure-cli/ $AZ_DIST main" | sudo tee /etc/apt/sources.list.d/microsoft.list
 ```
 ---
-### Atualizar o gerenciador de pacotes e instalar
+### 2.4. Atualizar o gerenciador de pacotes e instalar
 ```bash
 ### Atualizar o gerenciador de pacotes e instalar
 sudo apt-get update
 sudo apt-get install -y azure-cli
 ```
 ---
-## Preparação do Ambiente com Terraform
+## 3. Preparação do Ambiente com Terraform
 ```bash
 sudo apt update && sudo apt upgrade -y
 sudo apt install -y gnupg software-properties-common curl
@@ -56,13 +56,13 @@ sudo apt install -y terraform
 terraform -version
 ```
 ---
-## Rodando 
-### Login na Azure
+## 4. Rodando 
+### 4.1. Login na Azure
 ```bash
 az login --use-device-code --tenant <TenantID>
 ```
 ---
-### Rodando o Terraform
+### 4.2. Rodando o Terraform
 ```bash
 terraform init
 terraform plan
@@ -70,7 +70,7 @@ terraform apply -auto-approve
 terraform output user_credentials
 ```
 ---
-### Destruindo o Terraform
+### 4.3. Destruindo o Terraform
 ```bash
 terraform destroy -auto-approve
 ```
