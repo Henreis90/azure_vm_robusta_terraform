@@ -1,4 +1,4 @@
-# Virtual MAchine no Azure (Robusta) para Testes e Laboratórios
+# Virtual Machine no Azure (Robusta) para Testes e Laboratórios
 
 Usando terraform.
 Baixe o repositorio com git clone...
@@ -66,8 +66,12 @@ az login --use-device-code --tenant <TenantID>
 ```bash
 terraform init
 terraform plan
-terraform apply
+terraform apply -auto-approve
+terraform output user_credentials
 ```
 ---
 ### Destruindo o Terraform
-terraform destroy
+```bash
+terraform destroy -auto-approve
+```
+---
